@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   CENTRAL FORENSIC COLOR SYSTEM (CSS VARIABLES)
+   ========================================================= */
+
+:root {
+  /* Neutral Dark Surfaces */
+  --forensic-bg: #070b14;
+  --forensic-surface: #0c1220;
+  --forensic-surface-2: #111a2e;
+  --forensic-border: #1d283e;
+  --forensic-border-subtle: #162033;
+  --forensic-text: #e7edf7;
+  --forensic-muted: #8292ab;
+
+  /* Required Semantic Role & Classification Palette */
+  --forensic-target: #06b6d4;         /* Cyan - Target Subject */
+  --forensic-target-border: #22d3ee;
+  --forensic-direct: #059669;         /* Emerald / Teal - Direct 1-Hop Counterparty */
+  --forensic-direct-border: #10b981;
+  --forensic-intermediary: #7c3aed;   /* Violet / Purple - Intermediary 2+ Hops */
+  --forensic-intermediary-border: #a78bfa;
+  --forensic-vasp: #d97706;           /* Amber / Orange - Verified VASP Entity */
+  --forensic-vasp-border: #fbbf24;
+  --forensic-danger: #e11d48;         /* Red / Rose - High Risk / Threat */
+  --forensic-danger-border: #fb7185;
+  --forensic-success: #059669;        /* Emerald - Success / Verified */
+  --forensic-warning: #d97706;        /* Amber - Warning */
+}
+
+@layer base {
+  * {
+    border-color: var(--forensic-border);
+  }
+
+  html {
+    background-color: var(--forensic-bg);
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--forensic-bg);
+    color: var(--forensic-text);
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+  }
+
+  ::selection {
+    background: rgba(6, 182, 212, 0.25);
+    color: #f8fafc;
+  }
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--forensic-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--forensic-border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #27354d;
+}
+
+/* =========================================================
+   FORENSIC CARD & CONTAINER UTILITIES
+   ========================================================= */
+
+.forensic-surface {
+  background-color: var(--forensic-surface);
+  border: 1px solid var(--forensic-border);
+}
+
+.forensic-card {
+  background: linear-gradient(
+    145deg,
+    rgba(12, 18, 32, 0.96),
+    rgba(7, 11, 20, 0.94)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--forensic-border);
+  border-radius: 12px;
+}
+
+.forensic-card-interactive {
+  background: linear-gradient(
+    145deg,
+    rgba(12, 18, 32, 0.96),
+    rgba(7, 11, 20, 0.94)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--forensic-border);
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.forensic-card-interactive:hover {
+  border-color: rgba(6, 182, 212, 0.45);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.6);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   BACKGROUND PATTERNS
+   ========================================================= */
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(130, 146, 171, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(130, 146, 171, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(
+    rgba(6, 182, 212, 0.12) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* =========================================================
+   SEMANTIC ENTITY GLOWS & BADGES
+   ========================================================= */
+
+.badge-target {
+  background-color: rgba(6, 182, 212, 0.12);
+  color: var(--forensic-target-border);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+}
+
+.badge-direct {
+  background-color: rgba(5, 150, 105, 0.12);
+  color: var(--forensic-direct-border);
+  border: 1px solid rgba(5, 150, 105, 0.35);
+}
+
+.badge-intermediary {
+  background-color: rgba(124, 58, 237, 0.12);
+  color: var(--forensic-intermediary-border);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+}
+
+.badge-vasp {
+  background-color: rgba(217, 119, 6, 0.12);
+  color: var(--forensic-vasp-border);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+}
+
+.badge-danger {
+  background-color: rgba(225, 29, 72, 0.12);
+  color: var(--forensic-danger-border);
+  border: 1px solid rgba(225, 29, 72, 0.35);
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
